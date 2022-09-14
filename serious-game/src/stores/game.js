@@ -4,7 +4,8 @@ import { defineStore } from 'pinia'
 export const useGameStore = defineStore( {
   id:'game',
   state: () => ({
-    joueurs: ref(["test"])
+    joueurs: ref(["test"]),
+    questions: ref([])
   }),
   getters: {
     allJoueurs: (state) => {
@@ -20,6 +21,9 @@ export const useGameStore = defineStore( {
     },
     addAMember(member) {
       this.joueurs.push(member)
+    },
+    addQuestions(value) {
+      this.questions = [... value]
     }
   }
 

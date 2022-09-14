@@ -1,17 +1,45 @@
-<script>
-</script>
+<!-- export default{
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    axios
+      .get('https://killer-cepegra.xyz/cockpit-ingrwf10/api/content/items/questions?sort=%7Bnumber%3A%22asc%22%7D')
+      .then(response => (this.info = response))
+  }
+} -->
 
 <script setup>
+  import {ref} from 'vue'
+  import {useGameStore} from '@/stores/game'
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import dice from './ButtonDice.vue'
-const tableau = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16, 17, 
-                 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-                 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
-                 48
-                ]
+import axios from 'axios';
 
-const index = 0;
+const gameStore = useGameStore()
+
+const purple = ref([])
+
+
+
+const api = () => {
+      axios
+      .get('https://killer-cepegra.xyz/cockpit-ingrwf10/api/content/items/questions?sort=%7Bnumber%3A%22asc%22%7D')
+      .then(response => {
+        console.log(response.data)
+         purple.value = response.data
+         gameStore.addQuestions(response.data)
+         //return purple;
+         console.log(purple.value)
+      })
+    }
+        
+
+api()
+
 
 
 </script>
@@ -21,8 +49,8 @@ const index = 0;
     <template>
     </template>
     <ul>
-        <li class="actuel " v-for="(cases, key) in tableau">
-        {{ cases }}</li>
+        <li class="actuel " v-for="(cases, key) in purple" :key="key">
+        {{ cases.number }}</li>
       </ul>
   </WelcomeItem>
 
