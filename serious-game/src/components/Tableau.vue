@@ -19,9 +19,14 @@ const api = () => {
       })
     }
 
-
 api()
 
+const montre = () =>{
+  // [... purple].forEach(element => {
+    console.log(cases.number)
+    
+  // });
+}
 
 
 </script>
@@ -31,9 +36,13 @@ api()
     <template>
     </template>
     <ul>
-        <li class="actuel " v-for="(cases, key) in purple" :key="key">
+        <!-- <button @click="montre"> -->
+          <li @click="montre" class="actuel " v-for="(cases, key) in purple" :key="key">
         {{ cases.number }}</li>
+        <!-- </button> -->
       </ul>
+    <button @click="montre" > </button>
+
   </WelcomeItem>
 
 </template>
