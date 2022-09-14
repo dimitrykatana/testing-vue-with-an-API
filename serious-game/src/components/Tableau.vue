@@ -23,7 +23,7 @@ api()
 
 const montre = () =>{
   // [... purple].forEach(element => {
-    console.log(cases.number)
+    console.log(purple[number])
     
   // });
 }
