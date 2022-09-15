@@ -15,5 +15,5 @@
     const alerteParent =() => {
         emits("clickjoueur", props.ident)
     }
-</script>
 
+</script>

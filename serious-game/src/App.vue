@@ -4,6 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import ButtonDice from './components/ButtonDice.vue';
 import { useGameStore } from '@/stores/game'
 import Joueur from './components/Joueur.vue'
+import Tableau from './components/Tableau.vue';
 const gameStore = useGameStore()
 
 const members = ['Rustre', 'Jean', 'Charles']
@@ -24,26 +25,29 @@ const parentjoueur = (value) => {
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
+  <header>
     <div class="wrapper">
       <input type="text" v-model="newUser"> <button @click="addUser">+</button>
+     
+      <Joueur v-for="(item, key) in listMembers" :key="key" :ident="key" @clickjoueur="parentjoueur"></Joueur>
+
       <ul>
         <li v-for="(member, key) in listMembers" :key='key'>
         {{ member }}</li>
       </ul>
 
-      <Joueur v-for="(item, key) in listMembers" :key="key" :ident="key" @clickjoueur="parentjoueur"></Joueur>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+      <!-- <Tableau></Tableau> -->
+
       </nav>
     </div>
   </header>
 
-  <RouterView />
+  <RouterView/>
 </template>
 
 <style scoped>
@@ -52,24 +56,11 @@ header {
   max-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
@@ -87,10 +78,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 
   header .wrapper {

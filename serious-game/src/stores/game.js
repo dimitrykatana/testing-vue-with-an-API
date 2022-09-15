@@ -15,7 +15,7 @@ export const useGameStore = defineStore( {
       return (id) => state.joueurs[id]
     },
     prendNumber: (state) => {
-      return (number) => state.joueurs
+      return (number) => state.questions[number]
     }
   },
   actions: {

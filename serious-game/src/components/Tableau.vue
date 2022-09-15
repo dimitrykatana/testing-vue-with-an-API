@@ -1,14 +1,12 @@
 <script setup>
   import {ref} from 'vue'
   import {useGameStore} from '@/stores/game'
-  import WelcomeItem from './WelcomeItem.vue'
+  // import WelcomeItem from './WelcomeItem.vue'  
   import dice from './ButtonDice.vue'
   import axios from 'axios';
-
-const gameStore = useGameStore()
+  const gameStore = useGameStore()
 
 const purple = ref([])
-
 
 const api = () => {
       axios
@@ -16,40 +14,27 @@ const api = () => {
       .then(response => {
          purple.value = response.data
          gameStore.addQuestions(response.data)
+         console.log(response.data)
       })
     }
 
 api()
 
-const montre = () =>{
-  // [... purple].forEach(element => {
-    console.log(purple[number])
-    
-  // });
+const montre = () => {
+  console.log("tondaron")
 }
 
-
 </script>
-
 <template>
-  <WelcomeItem>
-    <template>
-    </template>
     <ul>
-        <!-- <button @click="montre"> -->
           <li @click="montre" class="actuel " v-for="(cases, key) in purple" :key="key">
-        {{ cases.number }}</li>
-        <!-- </button> -->
+        {{ cases.qtype   }}</li>
       </ul>
-    <button @click="montre" > </button>
-
-  </WelcomeItem>
 
 </template>
 
-
-
 <style scoped>
+
 
 ul{
   display: flex;

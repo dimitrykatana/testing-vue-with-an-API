@@ -1,13 +1,3 @@
-<script>
-  export default {
-    name: "test",
-    methods: {
-      sendMessage() {
-        this.$emit('message',"test")
-      }
-    }
-  }
-</script>
 <script setup>
   import { ref } from "vue"
   
@@ -21,9 +11,7 @@ const dice =() => {
    // on utilise ref donc on met value 
    diceValue.value= dicer;
   
-  } 
-
-  
+  }
 
 </script>
 
@@ -35,6 +23,7 @@ const dice =() => {
     <button @click="dice" >Avancer </button>
   </div>
 </template>
+
 
 <style scoped>
   
@@ -54,6 +43,5 @@ h3 {
     text-align: left;
   }
 }
-
 
 </style>

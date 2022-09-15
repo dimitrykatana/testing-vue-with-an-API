@@ -6,8 +6,9 @@ import ButtonDice from '../components/ButtonDice.vue';
 
 <template>
   <main>
-    <ButtonDice/>
+    <Tableau>
+      <ButtonDice/>
 
-    <Tableau />
+    </Tableau>
   </main>
 </template>
