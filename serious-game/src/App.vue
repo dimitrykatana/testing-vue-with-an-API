@@ -4,8 +4,24 @@ import { RouterLink, RouterView } from 'vue-router'
 import ButtonDice from './components/ButtonDice.vue';
 import { useGameStore } from '@/stores/game'
 import Joueur from './components/Joueur.vue'
-import Tableau from './components/Tableau.vue';
+import axios from 'axios';
+
+// import Tableau from './components/Tableau.vue';
 const gameStore = useGameStore()
+
+
+  const purple = ref([])
+
+const api = () => {
+      axios
+      .get('https://killer-cepegra.xyz/cockpit-ingrwf10/api/content/items/questions?sort=%7Bnumber%3A%22asc%22%7D')
+      .then(response => {
+         purple.value = response.data
+         gameStore.addQuestions(response.data)
+      })
+    }
+
+api()
 
 const members = ['Rustre', 'Jean', 'Charles']
 gameStore.addMembers(members)
@@ -28,26 +44,26 @@ const parentjoueur = (value) => {
 
   <header>
     <div class="wrapper">
-      <input type="text" v-model="newUser"> <button @click="addUser">+</button>
-     
       <Joueur v-for="(item, key) in listMembers" :key="key" :ident="key" @clickjoueur="parentjoueur"></Joueur>
 
+      <input type="text" v-model="newUser"> <button @click="addUser">+</button>
+    
       <ul>
         <li v-for="(member, key) in listMembers" :key='key'>
         {{ member }}</li>
       </ul>
 
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-      <!-- <Tableau></Tableau> -->
 
       </nav>
+      
     </div>
-  </header>
 
+  </header>
   <RouterView/>
+
 </template>
 
 <style scoped>

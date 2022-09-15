@@ -1,12 +1,20 @@
 <script setup>
-  import { ref } from "vue"
+        import { useGameStore } from '@/stores/game'
+        const gameStore = useGameStore()
+        const props = defineProps(['question'])
+        const Nombre = gameStore.prendNumber(props.question)
+        const emits = defineEmits(["clickjoueur"])
 
-
+        const alerteParent =() => {
+            emits("clickjoueur", props.question)
+        }    
 </script>
 
+
 <template>
-<div>
-    <h1>on est la ma gueuele </h1>
-</div>
+    <li>
+        <h1>{{ question.number }}</h1>
+        <slot></slot>   
+    </li>
+    </template>
     
-</template>

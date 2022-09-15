@@ -1,8 +1,3 @@
-<script setup>
-import ButtonDice from '../components/ButtonDice.vue';
-
-</script>
-
 <template>
   <div class="about">
           <!-- si on veut bind un nombre on utilise v-bind (dans notre cas les deux points), sinon

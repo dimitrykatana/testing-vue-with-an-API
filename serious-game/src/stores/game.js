@@ -1,11 +1,11 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useGameStore = defineStore( {
   id:'game',
   state: () => ({
     joueurs: ref(["test"]),
-    questions: ref([])
+    questions: []
   }),
   getters: {
     allJoueurs: (state) => {
@@ -13,6 +13,9 @@ export const useGameStore = defineStore( {
     },
     oneJoueur: (state) => {
       return (id) => state.joueurs[id]
+    },
+    allQuestions: (state) =>{
+      return state.questions
     },
     prendNumber: (state) => {
       return (number) => state.questions[number]

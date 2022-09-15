@@ -1,7 +1,8 @@
 <template>
-    <!-- <div class="details"> -->
+    <div class="details">
+      <!-- pour obtenir la valeur de ce qui est contenu dedans on doit mettre le slot sinon on le prend pas en compte -->
       <slot></slot>
-    <!-- </div> -->
+    </div>
 </template>
 
 <style scoped>

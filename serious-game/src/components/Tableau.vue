@@ -1,34 +1,26 @@
 <script setup>
-  import {ref} from 'vue'
-  import {useGameStore} from '@/stores/game'
+  import {ref, computed} from 'vue'
   // import WelcomeItem from './WelcomeItem.vue'  
   import dice from './ButtonDice.vue'
-  import axios from 'axios';
+  import Questions from './Questions/Questions.vue';
+  import { useGameStore } from '@/stores/game'
   const gameStore = useGameStore()
 
-const purple = ref([])
 
-const api = () => {
-      axios
-      .get('https://killer-cepegra.xyz/cockpit-ingrwf10/api/content/items/questions?sort=%7Bnumber%3A%22asc%22%7D')
-      .then(response => {
-         purple.value = response.data
-         gameStore.addQuestions(response.data)
-         console.log(response.data)
-      })
-    }
-
-api()
-
-const montre = () => {
-  console.log("tondaron")
-}
+  // on capte toute les questions à partir du game store de  pinia
+  // computed actualise l'élément courant sous tout réactualiser, vu que on l'obtient par après
+  // compute attends que un parametre change et donc le paramètre qui change c'est Axios qui charge les éléments
+  const questions  = computed(() => {
+    return gameStore.allQuestions
+  })
 
 </script>
 <template>
     <ul>
-          <li @click="montre" class="actuel " v-for="(cases, key) in purple" :key="key">
-        {{ cases.qtype   }}</li>
+
+      <Questions :question="question"  class="actuel " v-for="(question, key) in questions" :key="key">
+       {{ question.qtype }}
+      </Questions>
       </ul>
 
 </template>

@@ -1,7 +1,6 @@
 <script setup>
   import { ref } from "vue"
   
-  
 //state
 const diceValue = ref(0)
 //endstate
@@ -24,9 +23,7 @@ const dice =() => {
   </div>
 </template>
 
-
 <style scoped>
-  
 
 h3 {
   font-size: 1.2rem;
