@@ -30,7 +30,7 @@ const parentjoueur = (value) => {
     <div class="wrapper">
       <input type="text" v-model="newUser"> <button @click="addUser">+</button>
       <ul>
-        <li v-for="(member, key) in listMembers">
+        <li v-for="(member, key) in listMembers" :key='key'>
         {{ member }}</li>
       </ul>
 

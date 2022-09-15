@@ -14,3 +14,13 @@ Composant pour le dé:
 
 - prochaine étape: "vérifié si la case actuelle a déja été utilisé ou pas. Si c'est le cas on va à la case x+1 sinon on va à la case x-1, si les 2 sont remplies ont restera alors sur la case x.
 
+un composant pour le plateau avec gestion de composants "cases"
+
+le  parcours est composé de 37 cases quizz thématique + de 12 cases « challenge» dont le but est d’introduire 
+des mécaniques ludiques pour susciter l’adhésion des différentes catégories de joueurs (exemples: possibilité
+de mise,  faire passer un tour, joker, quitte ou double, etc.).  Les cases seront numérotées et elles 
+obéiront à un code couleur qui correspond à une thématique:
+gris= questions théoriques ;
+vert = questions domaine économique; 
+bleu = questions domaine publique/politique
+orange= questions domaine domestique.  
