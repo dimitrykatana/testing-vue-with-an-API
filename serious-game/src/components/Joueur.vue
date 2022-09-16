@@ -9,9 +9,9 @@
     import { useGameStore } from '@/stores/game'
     const gameStore = useGameStore()
     const props = defineProps(['ident'])
-    const theJoueur = gameStore.oneJoueur(props.ident)
+    // const theJoueur = gameStore.oneJoueur(props.ident)
     const emits = defineEmits(["clickjoueur"])
-
+    // console.log(props.ident)
     const alerteParent =() => {
         emits("clickjoueur", props.ident)
     }

@@ -5,16 +5,13 @@
         const Nombre = gameStore.prendNumber(props.question)
         const emits = defineEmits(["clickjoueur"])
 
-        const alerteParent =() => {
-            emits("clickjoueur", props.question)
-        }    
+   
 </script>
-
 
 <template>
     <li>
         <h1>{{ question.number }}</h1>
         <slot></slot>   
     </li>
-    </template>
+</template>
     

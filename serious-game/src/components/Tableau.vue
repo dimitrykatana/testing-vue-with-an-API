@@ -1,9 +1,10 @@
 <script setup>
   import {ref, computed} from 'vue'
-  // import WelcomeItem from './WelcomeItem.vue'  
   import dice from './ButtonDice.vue'
   import Questions from './Questions/Questions.vue';
   import { useGameStore } from '@/stores/game'
+  import FormMultiple from './Questions/FormMultiple.vue';
+  import Challenge from './Questions/Challenge.vue';
   const gameStore = useGameStore()
 
 
@@ -14,19 +15,28 @@
     return gameStore.allQuestions
   })
 
+  const parentquestions = (value) => {
+    alert('La question est ' + gameStore.allQuestions[value ].question)
+  }
+
 </script>
 <template>
     <ul>
-
       <Questions :question="question"  class="actuel " v-for="(question, key) in questions" :key="key">
-       {{ question.qtype }}
+       <!-- {{ question.qtype }} -->
+
+      <FormMultiple v-if="question.qtype === 'form-multiple'" :question="key"  @clickdisplay="parentquestions" >
+      </FormMultiple>
+
+      <Challenge v-if="question.qtype === 'challenge'" :question="key"  @clickdisplay="parentquestions">
+      </Challenge>
+
       </Questions>
       </ul>
 
 </template>
 
 <style scoped>
-
 
 ul{
   display: flex;
@@ -41,8 +51,7 @@ ul{
     padding: 10px;
     list-style: none;
     border-radius: 12px;
-  
-  }
+}
 
   .actuel:hover{
     color: white;

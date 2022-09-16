@@ -18,7 +18,7 @@ export const useGameStore = defineStore( {
       return state.questions
     },
     prendNumber: (state) => {
-      return (number) => state.questions[number]
+      return (question) => state.questions[question]
     }
   },
   actions: {

@@ -6,11 +6,8 @@ import { useGameStore } from '@/stores/game'
 import Joueur from './components/Joueur.vue'
 import axios from 'axios';
 
-// import Tableau from './components/Tableau.vue';
 const gameStore = useGameStore()
-
-
-  const purple = ref([])
+const purple = ref([])
 
 const api = () => {
       axios
@@ -18,6 +15,7 @@ const api = () => {
       .then(response => {
          purple.value = response.data
          gameStore.addQuestions(response.data)
+
       })
     }
 
@@ -27,7 +25,7 @@ const members = ['Rustre', 'Jean', 'Charles']
 gameStore.addMembers(members)
 
 const listMembers = computed( () => { return gameStore.allJoueurs})
-console.log(listMembers)
+// console.log(listMembers)
 const newUser = ref('')
 
 const addUser = () => {
